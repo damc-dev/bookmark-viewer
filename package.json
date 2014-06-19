@@ -1,0 +1,9 @@
+{
+  "name": "bookmarks-parser",
+  "version": "1.0.0",
+  "author": "David McElligott <damc.dev@gmail.com>",
+  "dependencies": {
+    "jsonfile": "~1.1.1",
+    "underscore": "~1.6.0"
+  }
+}

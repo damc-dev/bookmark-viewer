@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookmarks</title>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  
+  <style>
+    .directory {
+     margin: 0;
+     padding: 0;
+    }
+  
+  </style>
+  <script>
+    console.log(<%= bookmarksJson %>);
+  </script>
+  
+  
+</head>
+<body>
+  <div class='content'>
+    <div class="panel panel-default">
+      <div class="panel-heading">Bookmarks Bar</div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <% _.each(bookmarks, function(obj) { %>
+            <li class="list-group-item">
+              <% if ( _.has(obj, 'children') ) { %>
+                <h3 class="directory"><%= obj.name %></h3>
+            </li>
+                  <% _.each(obj.children, function(obj) { %>
+                    
+                    <a href='<%= obj.url %>'>
+                      <li  class="list-group-item">
+                        <% if (obj.name == '') { %>
+                          <%= obj.url %>
+                        <% } else { %>
+                          <%= obj.name %>
+                        <% } %>
+                      </li>
+                    </a>
+
+                  <% }); %>
+                <% } else { %>
+                  <a href='<%= obj.url %>'><%= obj.name %></a>
+                <% } %>
+          <% }); %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
